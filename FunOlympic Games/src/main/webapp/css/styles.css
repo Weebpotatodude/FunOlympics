@@ -1,0 +1,684 @@
+@charset "ISO-8859-1";
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header .logo img {
+    width: 150px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+
+/*Index Page */
+
+
+#hero {
+    background-image: url("../images/FrontPage.jpg");
+    background-size: cover; /* This will make the background image cover the entire section */
+    background-position: center; /* This will center the background image */
+    height: 100vh;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#hero .container {
+    background: rgba(255, 255, 255, 0.5); /* Transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+#hero h1 {
+    font-size: 3rem;
+}
+
+#hero p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+#hero .btn {
+    background: #000000; /* Background color */
+    color: #fff; /* Text color */
+    padding: 1rem 2rem; /* Padding */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem; /* Font size */
+    border-radius: 5px; /* Border radius for rounded corners */
+    width: 200px; /* Set width as needed */
+    display: inline-block; /* Ensures block elements are treated as inline elements */
+    text-align: center; /* Center text */
+}
+
+
+#about, #sports, #call-to-action {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#about h2, #sports h2, #call-to-action h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#sports .sports-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#sports .sport {
+    background: #f4f4f4;
+    margin: 10px;
+    padding: 20px;
+    flex-basis: 45%;
+}
+
+#sports .manymore {
+    grid-column: span 2; /* This spans the .and-more element across two columns */
+    text-align: center; /* Aligns text to the center */
+    font-style: italic; /* Optional: italicize the text */
+    color: #000000; /* Optional: set color */
+}
+
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+footer ul li {
+    margin: 0 15px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+/* Register Page */
+#register {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#register h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#register form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#register label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+
+#register input[type="text"],
+#register input[type="email"],
+#register input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#register input[type="submit"] {
+    background: #e8491d;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#register input[type="submit"]:hover {
+    background: #d73c1a;
+}
+
+/* Login Page */
+#login {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#login h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#login form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#login label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+
+#login input[type="email"],
+#login input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#login input[type="submit"] {
+    background: #e8491d;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#login input[type="submit"]:hover {
+    background: #d73c1a;
+}
+
+/* Admin Dashboard */
+#admin-dashboard {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 60px); /* Adjust height to account for header */
+}
+
+.sidebar {
+    width: 250px; /* Fixed width for the sidebar */
+    background-color: #333; /* Background color for the left pane */
+    padding: 20px;
+    color: #fff;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.admin-links a {
+    display: block;
+    background-color: #007bff; /* Primary color */
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-links a:hover {
+    background-color: #0056b3; /* Darker shade of primary color on hover */
+}
+
+.main-content {
+    flex: 1; /* Let the content occupy remaining space */
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto; /* Add this to ensure scrolling if content overflows */
+    
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #fff;
+    
+}
+
+
+/* User Profile Page */
+#profile {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#profile h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#profile form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#profile label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+
+#profile input[type="text"],
+#profile input[type="email"],
+#profile input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#profile input[type="submit"] {
+    background: #e8491d;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#profile input[type="submit"]:hover {
+    background: #d73c1a;
+}
+
+/* Sports Selection Page */
+#sports-selection {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#sports-selection h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#sports-selection form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#sports-selection label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+
+#sports-selection select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#sports-selection input[type="submit"] {
+    background: #e8491d;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#sports-selection input[type="submit"]:hover {
+    background: #d73c1a;
+}
+
+/* Contact Page */
+#contact {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#contact label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contact textarea {
+    resize: vertical;
+}
+
+#contact input[type="submit"] {
+    background: #e8491d;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#contact input[type="submit"]:hover {
+    background: #d73c1a;
+}
+
+/* About Page */
+#about {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#about p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+#about h3 {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+
+/*Reset Password */
+.reset-password-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    text-align: center; /* Ensure text is centered */
+}
+
+.reset-password-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.reset-password-form label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.reset-password-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.reset-password-form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.reset-password-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+#user-activity {
+    margin-top: 2rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#user-activity table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#user-activity th, #user-activity td {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#user-activity th {
+    background: #000000;
+    color: #000000;
+}
+
+#user-activity td {
+    background: #000000;
+}
+
+/* Sections Styling */
+section {
+    padding: 2rem 0;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#dashboard, #events, #schedule, #forum, #profile {
+    text-align: center;
+}
+
+#personalized-content, #event-list, #schedule-list, #forum-topics {
+    background: #fff;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+form {
+    background: #fff;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    display: block;
+    width: 100%;
+    padding: .75rem;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Events Page */
+
+
+.event-columns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event {
+    flex: 1 0 50%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+
+
+/* Manage Users Page */
+.manage-users-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.manage-users-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.manage-users-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.manage-users-container table th,
+.manage-users-container table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.manage-users-container table th {
+    background-color: #f4f4f4;
+}
+
+.manage-users-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.manage-users-container button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+footer ul li {
+    margin: 0 15px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
