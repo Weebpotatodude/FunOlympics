@@ -1,11 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunOlympic Games Dashboard</title>
+    <title>User Profile</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="scripts.js" defer></script>
 </head>
 <body>
     <header>
@@ -15,68 +16,48 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="user.jsp">Profile</a></li>                
-                    <li><a href="events.jsp">Events</a></li>
-                    <li><a href="highlights.jsp">Highlights</a></li>
-                    <li><a href="forum.jsp">Forum</a></li>
-        			<li><a href="logoutServlet">Logout</a></li>
+                    <li><a href="user.jsp">Profile</a></li>
+                    <li><a href="ShowEventsServlet">Events</a></li>
+                    <li><a href="viewThreadsServlet">Forum</a></li>
+                    <li><a href="LogoutServlet">Logout</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="dashboard">
-            <div class="container">
-                <h2>Welcome, [User's Name]</h2>
-                <p>Here are your personalized recommendations and upcoming events.</p>
-                <div id="personalized-content">
-                    <!-- Personalized content will be dynamically loaded here -->
-                </div>
+        <div class="profile-container">
+            <div class="nav-tabs">
+                <a href="dashboard.jsp" class="active">Dashboard</a>
+                <a href="editProfile.jsp">Edit Profile</a>
+                <a href="editPassword.jsp">Edit Password</a>
+                <a href="logoutServlet">User Logout</a>
             </div>
-        </section>
 
-        <section id="events">
-            <div class="container">
-                <h2>Events</h2>
-                <div id="event-list">
-                    <!-- Events will be dynamically loaded here -->
-                </div>
-            </div>
-        </section>
+            <h2>Welcome to your user dashboard, <c:out value="${sessionScope.user.username}"/>!</h2>
+            <p>@<c:out value="${sessionScope.user.username}"/></p>
+            <p>From your account dashboard you can edit your <a href="editProfile.jsp">Profile Details</a> and <a href="editPassword.jsp">Edit Your Password</a>.</p>
+            <p>Not <c:out value="${sessionScope.user.username}"/>? <a href="logoutServlet">Sign Out</a></p>
 
-        <section id="schedule">
-            <div class="container">
-                <h2>Schedule</h2>
-                <div id="schedule-list">
-                    <!-- Schedule will be dynamically loaded here -->
+            <h3>Interested Events</h3>
+            <c:if test="${empty sessionScope.interestedEvents}">
+                <p>You have no interested events.</p>
+            </c:if>
+            <c:if test="${not empty sessionScope.interestedEvents}">
+                <div class="events">
+                    <c:forEach var="event" items="${sessionScope.interestedEvents}">
+                        <div class="event">
+                            <h4>${event.eventName}</h4>
+                            <p>${event.eventDate}</p>
+                            <p>${event.eventDescription}</p>
+                            <c:if test="${not empty event.eventImage}">
+                                <img src="${event.eventImage}" alt="${event.eventName}">
+                            </c:if>
+                        </div>
+                    </c:forEach>
                 </div>
-            </div>
-        </section>
-
-        <section id="forum">
-            <div class="container">
-                <h2>Forum</h2>
-                <div id="forum-topics">
-                    <!-- Forum topics will be dynamically loaded here -->
-                </div>
-            </div>
-        </section>
-
-        <section id="profile">
-            <div class="container">
-                <h2>Profile</h2>
-                <form id="profile-form">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" value="[User's Username]" disabled>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="[User's Email]" required>
-                    <label for="preferences">Preferences:</label>
-                    <textarea id="preferences" name="preferences">[User's Preferences]</textarea>
-                    <button type="submit">Update Profile</button>
-                </form>
-            </div>
-        </section>
+            </c:if>
+        </div>
     </main>
 
     <footer>

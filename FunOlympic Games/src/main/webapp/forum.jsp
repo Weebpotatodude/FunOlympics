@@ -1,4 +1,5 @@
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +18,9 @@
             <nav>
                 <ul>
                     <li><a href="user.jsp">Profile</a></li>
-                    <li><a href="events.jsp">Events</a></li>
-                    <li><a href="highlights.jsp">Highlights</a></li>
-                    <li><a href="forum.jsp">Forum</a></li>
-        			<li><a href="logoutServlet">Logout</a></li>
+                    <li><a href="ShowEventsServlet">Events</a></li>
+                    <li><a href="ViewThreadsServlet">Forum</a></li>
+                    <li><a href="logoutServlet">Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,51 +29,71 @@
 <main>
     <section id="forum">
         <div class="container">
-            <h2>FunOlympic Games Community</h2>
-             
-             <!-- Search form -->
-            <form id="search-form">
-                <label for="search-query">Search:</label>
-                <input type="text" id="search-query" name="search-query" required>
-                <button type="submit">Search</button>
-            </form>
-            
-            <!-- New forum topic form -->
- 
-			<form id="new-topic-form" method="post" action="NewTopicServlet">
-			    <label for="new-topic-title">Topic Title:</label>
-			    <input type="text" id="new-topic-title" name="new-topic-title" required>
-			
-			    <label for="new-topic-description">Topic Description:</label>
-			    <textarea id="new-topic-description" name="new-topic-description" required></textarea>
-			
-			    <button type="submit">Create Topic</button>
-			</form>
+            <h2>Forum</h2>
 
-            <div id="forum-topics">
-                <!-- Forum topics will be dynamically loaded here -->
-                <div class="forum-topic">
-                    <h3>[Topic Title]</h3>
-                    <p>[Brief Topic Description]</p>
-                    <a href="#topic">View Discussion</a>
+            <!-- Notification Message -->
+            <c:if test="${not empty sessionScope.message}">
+                <div class="${sessionScope.messageType}">
+                    ${sessionScope.message}
                 </div>
-                <!-- Repeat the above div for each forum topic -->
+                <c:remove var="message" scope="session"/>
+                <c:remove var="messageType" scope="session"/>
+            </c:if>
+
+            <!-- Add New Thread -->
+            <div class="add-thread">
+                <h3>Create a New Thread</h3>
+                <form action="AddThreadServlet" method="post">
+                    <input type="text" name="title" placeholder="Thread Title" required>
+                    <textarea name="content" placeholder="Thread Content" required></textarea>
+                    <button type="submit">Create Thread</button>
+                </form>
+            </div>
+
+            <!-- Display Threads -->
+            <div class="threads">
+                <c:forEach var="thread" items="${threadList}">
+                    <div class="thread">
+                        <h3>${thread.title}</h3>
+                        <p>${thread.content}</p>
+                        <p>Posted by: ${thread.username} on ${thread.createdAt}</p>
+                        
+                        <!-- Display Comments for this Thread -->
+                        <div class="comments">
+                            <c:forEach var="comment" items="${thread.comments}">
+                                <div class="comment">
+                                    <p>${comment.content}</p>
+                                    <p>Comment by: ${comment.username} on ${comment.createdAt}</p>
+                                </div>
+                            </c:forEach>
+                        </div>
+
+                        <!-- Add Comment -->
+                        <div class="add-comment">
+                            <form action="AddCommentServlet" method="post">
+                                <input type="hidden" name="threadId" value="${thread.threadId}">
+                                <textarea name="content" placeholder="Add a comment" required></textarea>
+                                <button type="submit">Add Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </section>
 </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 FunOlympic Games. All rights reserved.</p>
-            <nav>
-                <ul>
-                    <li><a href="#privacy">Privacy Policy</a></li>
-                    <li><a href="#terms">Terms of Service</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 FunOlympic Games. All rights reserved.</p>
+        <nav>
+            <ul>
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#terms">Terms of Service</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</footer>
 </body>
 </html>

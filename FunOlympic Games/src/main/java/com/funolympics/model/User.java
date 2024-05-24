@@ -66,9 +66,4 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
-
-	public void setAdmin(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
 }

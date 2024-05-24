@@ -14,7 +14,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="user.jsp">Home</a></li>
                     <li><a href="about.jsp">About</a></li>
                     <li><a href="schedule.jsp">Schedule</a></li>
                     <li><a href="contact.jsp">Contact</a></li>

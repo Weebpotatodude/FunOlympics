@@ -18,7 +18,7 @@
                     <li><a href="about.jsp">About</a></li>
                     <li><a href="schedule.jsp">Schedule</a></li>
                     <li><a href="contact.jsp">Contact</a></li>
-        			<li><a href="logoutServlet">Logout</a></li>
+                    <li><a href="LogoutServlet">Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -27,8 +27,8 @@
         <div class="sidebar">
             <h2>Main Navigation</h2>
             <div class="admin-links">
-                <a href="manageUsers.jsp" target="admin-content-iframe">User Management</a>
-                <a href="brodcastManagement.jsp" target="admin-content-iframe">Broadcast Management</a>
+                <a href="ManageUsersServlet" target="admin-content-iframe">User Management</a>
+                <a href="ManageEventsServlet" target="admin-content-iframe">Broadcast Management</a>
                 <a href="userInteraction.jsp" target="admin-content-iframe">User Interaction</a>
                 <a href="account-recovery.jsp" target="admin-content-iframe">Feedback and Support</a>
             </div>

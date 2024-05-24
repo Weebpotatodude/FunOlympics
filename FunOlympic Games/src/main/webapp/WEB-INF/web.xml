@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakarta.ee/web-app_6_0.xsd" version="6.0">
   <display-name>FunOlympic Games</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
@@ -18,8 +13,6 @@
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>LogoutServlet</display-name>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.funolympics.servlet.LogoutServlet</servlet-class>
   </servlet>
@@ -28,8 +21,6 @@
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>NewTopicServlet</display-name>
     <servlet-name>NewTopicServlet</servlet-name>
     <servlet-class>com.funolympics.servlet.NewTopicServlet</servlet-class>
   </servlet>
@@ -38,13 +29,198 @@
     <url-pattern>/NewTopicServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>ManagerUsersServlet</display-name>
-    <servlet-name>ManagerUsersServlet</servlet-name>
-    <servlet-class>com.funolympics.servlet.ManagerUsersServlet</servlet-class>
+    <servlet-name>ManageUsersServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.ManageUsersServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ManagerUsersServlet</servlet-name>
-    <url-pattern>/ManagerUsersServlet</url-pattern>
+    <servlet-name>ManageUsersServlet</servlet-name>
+    <url-pattern>/ManageUsersServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddUsersServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.AddUsersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUsersServlet</servlet-name>
+    <url-pattern>/AddUsersServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <url-pattern>/DeleteUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditUserServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.EditUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditUserServlet</servlet-name>
+    <url-pattern>/EditUserServlet</url-pattern>
+  </servlet-mapping>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error/404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/error/500.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/error/error.jsp</location>
+  </error-page>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Protected Area</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <context-param>
+    <param-name>dbUrl</param-name>
+    <param-value>jdbc:mysql://localhost:3306/funolympics_db</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbUser</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbPassword</param-name>
+    <param-value>password</param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>EventServlet</display-name>
+    <servlet-name>EventServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.EventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EventServlet</servlet-name>
+    <url-pattern>/EventServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManageEventServlet</display-name>
+    <servlet-name>ManageEventServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.ManageEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageEventServlet</servlet-name>
+    <url-pattern>/ManageEventServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditEventServlet</display-name>
+    <servlet-name>EditEventServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.EditEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditEventServlet</servlet-name>
+    <url-pattern>/EditEventServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddEventServlet</display-name>
+    <servlet-name>AddEventServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.AddEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddEventServlet</servlet-name>
+    <url-pattern>/AddEventServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteEventServlet</display-name>
+    <servlet-name>DeleteEventServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.DeleteEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteEventServlet</servlet-name>
+    <url-pattern>/DeleteEventServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowEventsServlet</display-name>
+    <servlet-name>ShowEventsServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.ShowEventsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowEventsServlet</servlet-name>
+    <url-pattern>/ShowEventsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserServlet</display-name>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddThreadServlet</display-name>
+    <servlet-name>AddThreadServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.AddThreadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddThreadServlet</servlet-name>
+    <url-pattern>/AddThreadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCommentServlet</display-name>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.AddCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <url-pattern>/AddCommentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewThreadsServlet</display-name>
+    <servlet-name>ViewThreadsServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.ViewThreadsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewThreadsServlet</servlet-name>
+    <url-pattern>/ViewThreadsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetUserIDServlet</display-name>
+    <servlet-name>GetUserIDServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.GetUserIDServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUserIDServlet</servlet-name>
+    <url-pattern>/GetUserIDServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetUserProfileServlet</display-name>
+    <servlet-name>GetUserProfileServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.GetUserProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUserProfileServlet</servlet-name>
+    <url-pattern>/GetUserProfileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InterestServlet</display-name>
+    <servlet-name>InterestServlet</servlet-name>
+    <servlet-class>com.funolympics.servlet.InterestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InterestServlet</servlet-name>
+    <url-pattern>/InterestServlet</url-pattern>
   </servlet-mapping>
 </web-app>
